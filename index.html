@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<title>proportion.js - meet the best proportion of the device.</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<style>
+*{padding:0;margin:0;}
+body, html{height:100%;width:100%;}
+body{background:#f6f6f6;font-family:courier, courier new, monospace;line-height: 1.5;}
+button{display:inline-block;padding: 10px;border-radius:3px;margin:10px;background:#08c;color:#fff;border:none;}
+button:focus{background:#ddd;outline:0;}
+center{position:relative;z-index:1;}
+
+[class^="col-"]{width:25%;height:100%;position:absolute;top:0;}
+.col-1, .col-3{background: #fcffee;}
+.col-3{left:50%;}
+
+.center, .top, .left{border:1px dotted #000;position:absolute;z-index:1;width:60%;}
+.center{width:50%;height:10%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);left:50%;top:50%;}
+.top{top:20%;height:30%;border-color:#08c;}
+.left{top:50%;left:30%;height:50%;border-color:#f30;}
+
+#wrapper{background:#fff;box-sizing:border-box;-webkit-box-sizing:border-box;border:1px dotted #f30;}
+#orientation{position:fixed;padding:20px;z-index:3;}
+</style>
+
+<body>
+
+  <div id="orientation">
+    <button>Lanscape(横屏)</button>
+    <button autofocus>Portrait(竖屏)</button>
+  </div>
+
+  <div id="wrapper">
+    <center>meet the best proportion of the device.</center>
+    <p class="center"></p>
+    <p class="top"></p>
+    <p class="left"></p>
+
+    <div class="col-1"></div>
+    <div class="col-2"></div>
+    <div class="col-3"></div>
+    <div class="col-4"></div>
+  </div>
+
+  <script src="./proportion.js"></script>
+  <script>
+  var el = document.querySelector('#wrapper');
+  var btns = document.querySelectorAll('button');
+  var lanscape = btns[0];
+  var portrait = btns[1];
+  var isLandscape = 0;
+
+  // 显示竖屏
+  proportion(el);
+  window.addEventListener('resize', function() {
+    proportion(el, isLandscape);
+  });
+  
+  lanscape.addEventListener('click', function() {
+    isLandscape = 1;
+    proportion(el, isLandscape);
+  });
+
+  portrait.addEventListener('click', function() {
+    isLandscape = 0;
+    proportion(el, isLandscape);
+  });
+  </script>
+
+</body>
+
+</html>
