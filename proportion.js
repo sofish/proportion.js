@@ -8,7 +8,7 @@ var proportion = (function() {
       //魅蓝note手机上的firefox，window.innerWidth和document.documentElement.clientWidth都不能取得正确的宽度，
       //screen.width可以。
       height: screen.height || window.innerHeight || document.documentElement.clientHeight,
-      width: screen.width || window.innerWidth || document.documentElement.clientWidth;
+      width: screen.width || window.innerWidth || document.documentElement.clientWidth
     }
   };
 
