@@ -5,8 +5,10 @@ var proportion = (function() {
   // ** get window size
   var size = function() {
     return {
-      height: Math.max(window.innerHeight || 0, document.documentElement.clientHeight),
-      width: Math.max(window.innerWidth || 0, document.documentElement.clientWidth)
+      //魅蓝note手机上的firefox，window.innerWidth和document.documentElement.clientWidth都不能取得正确的宽度，
+      //screen.width可以。
+      height: screen.height || window.innerHeight || document.documentElement.clientHeight;
+      width: screen.width || window.innerWidth || document.documentElement.clientWidth;
     }
   };
 
